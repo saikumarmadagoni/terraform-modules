@@ -24,7 +24,7 @@ resource "aws_instance" "web-app" {
 
   ami           = var.ami
 
-  for_each = var.instance_type
+  for_each = set(var.instance_type)
 
   
 
