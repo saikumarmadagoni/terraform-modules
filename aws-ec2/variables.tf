@@ -10,7 +10,7 @@ variable "instance_type" {
 
 variable "security_group_id" {
 
-    type="string"
+    type=string
   
 }
 
