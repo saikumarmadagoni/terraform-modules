@@ -1,4 +1,1 @@
-variable "instance-id"{
-
-    type=list(string)
-}
+variable "instance-id"{}
