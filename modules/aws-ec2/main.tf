@@ -5,20 +5,7 @@ provider "aws" {
 }
 
 
-resource "tls_private_key" "private-key" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
 
-resource "aws_key_pair" "my-key-pair" {
-  key_name   = "YourKey"
-  public_key = tls_private_key.private-key.public_key_openssh
-}
-
-resource "local_file" "ssh_key" {
-  filename = "${aws_key_pair.my-key-pair.key_name}.pem"
-  content = tls_private_key.private-key.private_key_pem
-}
 
 resource "aws_instance" "web-app" {
 
@@ -40,7 +27,7 @@ resource "aws_instance" "web-app" {
     connection {
         type = "ssh"
         user = "ec2-user"
-        private_key = file("./${aws_key_pair.generated_key.key_name}.pem")
+        private_key = file("./${var.keyfile}.pem")
         host = self.public_ip
     }
   
