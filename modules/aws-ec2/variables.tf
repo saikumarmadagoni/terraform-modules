@@ -14,6 +14,11 @@ variable "security_group_id" {
   
 }
 
+variable "keyfile" {
+
+   type = string
+}
+
 
 variable "script" {
 
