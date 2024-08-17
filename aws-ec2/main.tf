@@ -40,7 +40,7 @@ resource "aws_instance" "web-app" {
     connection {
         type = "ssh"
         user = "ec2-user"
-        private_key = file("./${aws_key_pair.generated_key.key_name}.pem")
+        private_key = file("./${var.keyfile}.pem")
         host = self.public_ip
     }
   
